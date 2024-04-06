@@ -13,7 +13,7 @@ const DEVICE_AWAIT_TIMEOUT = 3000;
 
 let logger = Logger.defaultLogger;
 
-async function flashFirmware(firmwarePath, selectedDevice, isMicroPython = false){
+async function flashFirmware(firmwarePath, selectedDevice, isMicroPython = true){
     const serialPort = selectedDevice.getSerialPort();
     if(serialPort) {
         logger?.log(`👀 Device found: ${selectedDevice.deviceDescriptor.name} at ${serialPort}`);
