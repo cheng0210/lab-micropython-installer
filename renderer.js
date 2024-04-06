@@ -1,9 +1,7 @@
-const installButton = document.getElementById('install-button');
 const chooseFileLink = document.getElementById('choose-file-link');
 const outputElement = document.getElementById('output');
 const fileDropElement = document.getElementById('file-drop-area');
 const flashActivityIndicator = document.getElementById('activity-indicator');
-const usePreviewBuildCheckbox = document.getElementById('preview-builds-enabled');
 const deviceLoadingActivityIndicator = document.getElementById("device-loading-indicator");
 const deviceLoadingHint = document.getElementById("device-loading-hint");
 const reloadLinkContainer = document.getElementById("reload-link-container");
@@ -74,24 +72,18 @@ function enableDeviceListInteractions() {
   reloadDeviceListLink.style.opacity = 1;
 
    // Enable all buttons in the device selection list
-   const deviceItems = deviceSelectionList.querySelectorAll(".selection-item");
-   deviceItems.forEach((item) => {
-       item.disabled = false;
-   });
+  const deviceItems = deviceSelectionList.querySelectorAll(".selection-item");
+  deviceItems.forEach((item) => {
+      item.disabled = false;
+  });
 }
 
 function enableFlashingInteractions() {
-    usePreviewBuildCheckbox.disabled = false;
-    installButton.disabled = false;
-    installButton.style.opacity = 1;
     fileDropElement.style.opacity = 1;
     fileDropElement.style.pointerEvents = 'auto';
 }
 
 function disableFlashingInteractions() {
-    usePreviewBuildCheckbox.disabled = true;
-    installButton.disabled = true;
-    installButton.style.opacity = 0.25;
     fileDropElement.style.opacity = 0.25;
     fileDropElement.style.pointerEvents = 'none';
 }
@@ -126,33 +118,6 @@ chooseFileLink.addEventListener('click', () => {
 });
       
 
-installButton.addEventListener('click', () => {
-    disableFlashingInteractions();
-    disableDeviceListInteractions();
-    showFlashProgressIndicator();
-    const data = {
-      deviceData : getSelectedDeviceData(deviceSelectionList),
-      usePreviewBuild : usePreviewBuildCheckbox.checked
-    };
-
-    window.api.invoke('on-install', data)
-        .then((result) => {
-            console.log(result);
-            statusTextAnimator.clearStatusText();
-            showDialogMessageBox("Success", result);
-            disableFlashingInteractions();
-            // Give the device some time to reboot
-            refreshDeviceList(2000);
-        })
-        .catch((err) => {
-            console.error(err);
-            showErrorInStatusText(err);
-        }).finally(() => {
-            enableDeviceListInteractions();
-            enableFlashingInteractions();
-            hideFlashProgressIndicator();
-        });
-});
 
 fileDropElement.addEventListener('dragover', (e) => {
     e.preventDefault();

@@ -112,8 +112,8 @@ div#file-drop-area {
     gap: var(--main-flexbox-gap);
     padding: 25px;
 
-    min-height: 100px;
-    margin: 0px 60px 25px 60px;
+    min-height: 50%;
+    margin: 5% auto;
     /* background-color: #fcfcfc;
     border: #c3daff 2px dashed; */
     border-radius: 20px;

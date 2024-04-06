@@ -37,19 +37,13 @@
             <code id="output">&nbsp;</code>
             <div id="installation-controls" class="container">
                 <div id="install-button-container" class="container">
-                    <button id="install-button" class="primary">Install MicroPython</button>
-                    <div id="activity-indicator" class="loader-ring"><div></div><div></div><div></div><div></div></div>
+                    <div id="activity-indicator" class="loader-ring"></div>
                 </div>
-                <div>
-                    <input type="checkbox" id="preview-builds-enabled" />
-                    <label for="preview-builds-enabled">Use Preview Builds 🚧</label>
+                <div id="file-drop-area">
+                    <div><img id="drop-area" src="./assets/iconForDragAndDrop.png" /></div>
+                    <div>Drag &amp; drop custom firmware here or <a id="choose-file-link">choose file</a></div>
                 </div>
                 <!-- <button id="flash-button" class="secondary">Flash Custom Firmware</button> -->
-            </div>
-            <div>OR</div>
-            <div id="file-drop-area">
-                <div><img id="drop-area" src="./assets/iconForDragAndDrop.png" /></div>
-                <div>Drag &amp; drop custom firmware here or <a id="choose-file-link">choose file</a></div>
             </div>
         </main>
         <footer class="container">
