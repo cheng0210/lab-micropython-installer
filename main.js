@@ -9,7 +9,7 @@ if (process.platform === "win32" && handleSquirrelEvent()) {
     return;
 }
 
-require('update-electron-app')();
+// require('update-electron-app')();
 
 let flash;
 let win;
